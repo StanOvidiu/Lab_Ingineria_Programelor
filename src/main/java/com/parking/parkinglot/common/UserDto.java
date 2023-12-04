@@ -1,6 +1,9 @@
 package com.parking.parkinglot.common;
 
+import jakarta.persistence.Id;
+
 public class UserDto {
+    @Id
     private Long id;
     String username;
     String password;

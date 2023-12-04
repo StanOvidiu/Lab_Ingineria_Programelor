@@ -6,6 +6,7 @@ import java.util.Collection;
 
 @Entity
 public class User {
+
     @Id
     @GeneratedValue
     private Long id;
@@ -13,6 +14,7 @@ public class User {
     public void setId(Long id) {
         this.id = id;
     }
+
 
     public Long getId() {
         return id;
@@ -30,6 +32,7 @@ public class User {
     }
 
     private String email;
+    private String password;
 
     public String getEmail() {
         return email;
@@ -47,9 +50,10 @@ public class User {
         this.password = password;
     }
 
-    private String password;
+
     @OneToMany(mappedBy = "owner")
     private Collection<Car> cars;
+
 
     public Collection<Car> getCars() {
         return cars;

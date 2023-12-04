@@ -1,5 +1,6 @@
 package com.parking.parkinglot.ejb;
 
+import com.parking.parkinglot.Cars;
 import com.parking.parkinglot.common.CarDto;
 import com.parking.parkinglot.entities.Car;
 import com.parking.parkinglot.entities.User;
@@ -11,6 +12,7 @@ import jakarta.persistence.PersistenceContext;
 import jakarta.persistence.TypedQuery;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import java.util.logging.Logger;
 
@@ -73,4 +75,17 @@ public class CarsBean {
         car.setOwner(user);
     }
 
+    public void deleteCarsByIds(Collection<Long> carIds) {
+        LOG.info("deleteCarsByIds");
+
+        for (Long carId : carIds){
+            Car car = entityManager.find(Car.class, carId);
+            entityManager.remove(car);
+        }
+    }
+
+    public CarDto findById(Long carId) {
+        Car car = entityManager.find(Car.class,carId);
+        return new CarDto(carId,car.getLicensePlate(),car.getParkingSpot(),car.getOwner().getUsername());
+    }
 }

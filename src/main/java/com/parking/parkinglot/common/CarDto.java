@@ -1,6 +1,9 @@
 package com.parking.parkinglot.common;
 
+import jakarta.persistence.Id;
+
 public class CarDto {
+    @Id
     private Long id;
     String licensePlate;
     String parkingSpot;
