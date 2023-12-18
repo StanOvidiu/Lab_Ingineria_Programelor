@@ -22,43 +22,42 @@ public class CarsBean {
     @PersistenceContext
     EntityManager entityManager;
 
-    public List<CarDto> findAllCars(){
+    public List<CarDto> findAllCars() {
         LOG.info("findAllCars");
         try {
-            TypedQuery<Car> typedQuerry = entityManager.createQuery("SELECT c FROM Car c",Car.class);
+            TypedQuery<Car> typedQuerry = entityManager.createQuery("SELECT c FROM Car c", Car.class);
             List<Car> cars = typedQuerry.getResultList();
             return copyCarsToDto(cars);
-        }
-        catch (Exception ex){
+        } catch (Exception ex) {
             throw new EJBException(ex);
         }
     }
 
-    private List<CarDto> copyCarsToDto(List<Car>cars){
+    private List<CarDto> copyCarsToDto(List<Car> cars) {
         List<CarDto> list = new ArrayList<>();
-        for(Car car : cars){
-            CarDto temp = new CarDto(car.getId(),car.getLicensePlate(),car.getParkingSpot(),car.getOwner().getUsername());
+        for (Car car : cars) {
+            CarDto temp = new CarDto(car.getId(), car.getLicensePlate(), car.getParkingSpot(), car.getOwner().getUsername());
             list.add(temp);
         }
         return list;
 
     }
 
-    public void createCar(String licensePlate,String parkingSpot,Long userId){
+    public void createCar(String licensePlate, String parkingSpot, Long userId) {
         LOG.info("createCar");
 
         Car car = new Car();
         car.setLicensePlate(licensePlate);
         car.setParkingSpot(parkingSpot);
 
-        User user = entityManager.find(User.class,userId);
+        User user = entityManager.find(User.class, userId);
         user.getCars().add(car);
         car.setOwner(user);
 
         entityManager.persist(car);
     }
 
-    public void updateCar(Long carId, String licensePlate, String parkingSpot, Long userId){
+    public void updateCar(Long carId, String licensePlate, String parkingSpot, Long userId) {
         LOG.info("updateCar");
 
         Car car = entityManager.find(Car.class, carId);
@@ -78,14 +77,14 @@ public class CarsBean {
     public void deleteCarsByIds(Collection<Long> carIds) {
         LOG.info("deleteCarsByIds");
 
-        for (Long carId : carIds){
+        for (Long carId : carIds) {
             Car car = entityManager.find(Car.class, carId);
             entityManager.remove(car);
         }
     }
 
     public CarDto findById(Long carId) {
-        Car car = entityManager.find(Car.class,carId);
-        return new CarDto(carId,car.getLicensePlate(),car.getParkingSpot(),car.getOwner().getUsername());
+        Car car = entityManager.find(Car.class, carId);
+        return new CarDto(carId, car.getLicensePlate(), car.getParkingSpot(), car.getOwner().getUsername());
     }
 }

@@ -9,6 +9,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
+import java.util.Arrays;
 
 @WebServlet(name = "AddUser", value = "/AddUser")
 public class AddUser extends HttpServlet {
