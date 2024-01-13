@@ -11,6 +11,7 @@ import java.util.logging.Logger;
 @Stateless
 public class PasswordBean {
     private static final Logger LOG = Logger.getLogger(PasswordBean.class.getName());
+
     public String convertToSha256(String password) {
         try {
             MessageDigest messageDigest = MessageDigest.getInstance("SHA-256");

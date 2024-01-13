@@ -8,7 +8,8 @@
         <div class="row">
             <div class="col-md-6 mb-3">
                 <label for="license_plate">License Plate</label>
-                <input type="text" class="form-control" id="license_plate" name="license_plate" placeholder="" value="${car.licensePlate}" required>
+                <input type="text" class="form-control" id="license_plate" name="license_plate" placeholder=""
+                       value="${car.licensePlate}" required>
                 <div class="invalid-feedback">
                     License Plate is required.
                 </div>
@@ -17,7 +18,8 @@
         <div class="row">
             <div class="col-md-6 mb-3">
                 <label for="parking_spot">Parking Spot</label>
-                <input type="text" class="form-control" id="parking_spot" name="parking_spot" placeholder="" value="${car.parkingSpot}" required>
+                <input type="text" class="form-control" id="parking_spot" name="parking_spot" placeholder=""
+                       value="${car.parkingSpot}" required>
                 <div class="invalid-feedback">
                     Parking spot is required.
                 </div>
@@ -37,7 +39,7 @@
                 </div>
             </div>
         </div>
-        <input type="hidden" name="car_id" value="${car.id}" />
-        <button class="w-100 btn btn-primary btn-lg" type="submit" >Save</button>
+        <input type="hidden" name="car_id" value="${car.id}"/>
+        <button class="w-100 btn btn-primary btn-lg" type="submit">Save</button>
     </form>
 </t:pageTemplate>

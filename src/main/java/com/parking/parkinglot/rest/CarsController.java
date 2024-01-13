@@ -16,11 +16,13 @@ import java.util.List;
 public class CarsController {
     @Inject
     CarsBean carsBean;
+
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public List<CarDto> findAllCars() {
         return carsBean.findAllCars();
     }
+
     @GET
     @Path("/{id}")
     @Produces(MediaType.APPLICATION_JSON)

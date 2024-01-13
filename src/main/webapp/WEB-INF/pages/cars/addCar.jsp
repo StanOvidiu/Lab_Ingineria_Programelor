@@ -8,12 +8,14 @@
         <div class="row">
             <div class="col-md-6 mb-3">
                 <label for="license_plate">License Plate</label>
-                <input type="text" class="form-control" id="license_plate" name="license_plate" placeholder="" value="" required>
+                <input type="text" class="form-control" id="license_plate" name="license_plate" placeholder="" value=""
+                       required>
                 <div class="invalid-feedback">
                     License Plate is required.
                 </div>
                 <label for="parking_spot">Parking Spot</label>
-                <input type="text" class="form-control" id="parking_spot" name="parking_spot" placeholder="" value="" required>
+                <input type="text" class="form-control" id="parking_spot" name="parking_spot" placeholder="" value=""
+                       required>
                 <div class="invalid-feedback">
                     Parking spot is required.
                 </div>
@@ -23,7 +25,7 @@
                         <option value="${user.id}">${user.username}</option>
                     </c:forEach>
                 </select>
-                <button class="w-100 btn btn-primary btn-lg" type="submit" >Add Car</button>
+                <button class="w-100 btn btn-primary btn-lg" type="submit">Add Car</button>
             </div>
         </div>
     </form>

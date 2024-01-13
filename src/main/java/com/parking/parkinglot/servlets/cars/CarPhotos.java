@@ -1,4 +1,4 @@
-package com.parking.parkinglot;
+package com.parking.parkinglot.servlets.cars;
 
 import com.parking.parkinglot.common.CarDto;
 import com.parking.parkinglot.common.CarPhotoDto;
@@ -17,7 +17,7 @@ import java.io.IOException;
 import java.util.Arrays;
 
 @WebServlet(name = "CarPhotos", value = "/CarPhotos")
-public class CarPhotos extends HttpServlet{
+public class CarPhotos extends HttpServlet {
 
     @Inject
     CarsBean carsBean;

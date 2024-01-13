@@ -1,14 +1,12 @@
 package com.parking.parkinglot.ejb;
 
-import com.parking.parkinglot.Cars;
 import com.parking.parkinglot.common.CarDto;
 import com.parking.parkinglot.common.CarPhotoDto;
-import com.parking.parkinglot.entities.Car;
-import com.parking.parkinglot.entities.CarPhoto;
-import com.parking.parkinglot.entities.User;
+import com.parking.parkinglot.entities.cars.Car;
+import com.parking.parkinglot.entities.cars.CarPhoto;
+import com.parking.parkinglot.entities.users.User;
 import jakarta.ejb.EJBException;
 import jakarta.ejb.Stateless;
-import jakarta.jws.soap.SOAPBinding;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import jakarta.persistence.TypedQuery;
@@ -104,6 +102,7 @@ public class CarsBean {
         photo.setCar(car);
         entityManager.persist(photo);
     }
+
     public CarPhotoDto findPhotoByCarId(Integer carId) {
         List<CarPhoto> photos = entityManager
                 .createQuery("SELECT p FROM CarPhoto p where p.car.id = :id", CarPhoto.class)

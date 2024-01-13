@@ -1,14 +1,11 @@
 package com.parking.parkinglot.ejb;
 
-import com.parking.parkinglot.common.CarDto;
 import com.parking.parkinglot.common.UserDto;
-import com.parking.parkinglot.entities.Car;
-import com.parking.parkinglot.entities.User;
-import com.parking.parkinglot.entities.UserGroup;
+import com.parking.parkinglot.entities.users.User;
+import com.parking.parkinglot.entities.users.UserGroup;
 import jakarta.ejb.EJBException;
 import jakarta.ejb.Stateless;
 import jakarta.inject.Inject;
-import jakarta.jws.soap.SOAPBinding;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import jakarta.persistence.TypedQuery;
@@ -26,22 +23,21 @@ public class UserBean {
     @PersistenceContext
     EntityManager entityManager;
 
-    public List<UserDto> findAllUsers(){
+    public List<UserDto> findAllUsers() {
         LOG.info("findAllCars");
         try {
             TypedQuery<User> typedQuerry = entityManager.createQuery("SELECT u FROM User u", User.class);
             List<User> users = typedQuerry.getResultList();
             return copyUsersToDto(users);
-        }
-        catch (Exception ex){
+        } catch (Exception ex) {
             throw new EJBException(ex);
         }
     }
 
-    private List<UserDto> copyUsersToDto(List<User>users){
+    private List<UserDto> copyUsersToDto(List<User> users) {
         List<UserDto> list = new ArrayList<>();
-        for(User user : users){
-            UserDto temp = new UserDto(user.getId(),user.getUsername(),user.getPassword(),user.getEmail());
+        for (User user : users) {
+            UserDto temp = new UserDto(user.getId(), user.getUsername(), user.getPassword(), user.getEmail());
             list.add(temp);
         }
         return list;
@@ -57,6 +53,7 @@ public class UserBean {
         entityManager.persist(newUser);
         assignGroupsToUser(username, groups);
     }
+
     private void assignGroupsToUser(String username, Collection<String> groups) {
         LOG.info("assignGroupsToUser");
         for (String group : groups) {
@@ -67,7 +64,7 @@ public class UserBean {
         }
     }
 
-    public Collection<String> findUsernameByUserIds(Collection<Long> userIds){
+    public Collection<String> findUsernameByUserIds(Collection<Long> userIds) {
         List<String> username = entityManager.createQuery("SELECT u.username FROM User u WHERE u.id in :userIds", String.class).setParameter("userIds", userIds).getResultList();
         return username;
     }

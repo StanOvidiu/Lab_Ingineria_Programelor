@@ -1,4 +1,4 @@
-package com.parking.parkinglot;
+package com.parking.parkinglot.servlets.cars;
 
 import com.parking.parkinglot.common.CarDto;
 import com.parking.parkinglot.ejb.CarsBean;
@@ -19,7 +19,7 @@ import java.util.Arrays;
 
 @MultipartConfig
 @WebServlet(name = "AddCarPhoto", value = "/AddCarPhoto")
-public class AddCarPhoto extends HttpServlet{
+public class AddCarPhoto extends HttpServlet {
 
     @Inject
     CarsBean carsBean;
@@ -28,9 +28,9 @@ public class AddCarPhoto extends HttpServlet{
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         Long carId = Long.parseLong(request.getParameter("id"));
         CarDto car = carsBean.findById(carId);
-        request.setAttribute("car",car);
+        request.setAttribute("car", car);
 
-        request.getRequestDispatcher("/WEB-INF/pages/addCarPhoto.jsp").forward(request, response);
+        request.getRequestDispatcher("/WEB-INF/pages/cars/addCarPhoto.jsp").forward(request, response);
     }
 
     @Override
@@ -45,7 +45,7 @@ public class AddCarPhoto extends HttpServlet{
         byte[] fileContent = new byte[(int) fileSize];
         filePart.getInputStream().read(fileContent);
 
-        carsBean.addPhotoToCar(carId,filename,fileType,fileContent);
+        carsBean.addPhotoToCar(carId, filename, fileType, fileContent);
         response.sendRedirect(request.getContextPath() + "/Cars");
     }
 }

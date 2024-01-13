@@ -14,7 +14,7 @@
                 <div class="row">
                     <div class="col">
                         <c:if test="${pageContext.request.isUserInRole('WRITE_USERS')}">
-                            <input type="checkbox" name="user_ids" value="${user.id}" />
+                            <input type="checkbox" name="user_ids" value="${user.id}"/>
                         </c:if>
                     </div>
                     <div class="col">
@@ -25,7 +25,8 @@
                     </div>
                     <div class="col">
                         <c:if test="${pageContext.request.isUserInRole('WRITE_USERS')}">
-                            <a class="btn btn-success" href="${pageContext.request.contextPath}/EditUser?id=${user.id}">Edit User</a>
+                            <a class="btn btn-success" href="${pageContext.request.contextPath}/EditUser?id=${user.id}">Edit
+                                User</a>
                         </c:if>
                     </div>
                 </div>

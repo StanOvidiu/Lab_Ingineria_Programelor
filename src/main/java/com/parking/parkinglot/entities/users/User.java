@@ -1,5 +1,6 @@
-package com.parking.parkinglot.entities;
+package com.parking.parkinglot.entities.users;
 
+import com.parking.parkinglot.entities.cars.Car;
 import jakarta.persistence.*;
 
 import java.util.Collection;

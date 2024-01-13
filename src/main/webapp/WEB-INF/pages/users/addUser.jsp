@@ -18,7 +18,8 @@
                     Email is required.
                 </div>
                 <label for="password">Password</label>
-                <input type="password" class="form-control" id="password" name="password" placeholder="" value="" required>
+                <input type="password" class="form-control" id="password" name="password" placeholder="" value=""
+                       required>
                 <div class="invalid-feedback">
                     Password is required.
                 </div>
@@ -28,7 +29,7 @@
                         <option value="${user_group}">${user_group}</option>
                     </c:forEach>
                 </select>
-                <button class="w-100 btn btn-primary btn-lg" type="submit" >Save</button>
+                <button class="w-100 btn btn-primary btn-lg" type="submit">Save</button>
             </div>
         </div>
     </form>

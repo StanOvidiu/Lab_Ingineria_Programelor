@@ -1,4 +1,4 @@
-package com.parking.parkinglot;
+package com.parking.parkinglot.servlets.cars;
 
 import com.parking.parkinglot.common.CarDto;
 import com.parking.parkinglot.ejb.CarsBean;
@@ -19,7 +19,7 @@ import java.util.List;
 
 @DeclareRoles({"READ_CARS", "WRITE_CARS"})
 @ServletSecurity(value = @HttpConstraint(rolesAllowed = {"READ_CARS"}),
-        httpMethodConstraints = {@HttpMethodConstraint(value = "POST", rolesAllowed ={"WRITE_CARS"})})
+        httpMethodConstraints = {@HttpMethodConstraint(value = "POST", rolesAllowed = {"WRITE_CARS"})})
 @WebServlet(name = "Cars", value = "/Cars")
 public class Cars extends HttpServlet {
 
@@ -31,7 +31,7 @@ public class Cars extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         List<CarDto> cars = carsBean.findAllCars();
         request.setAttribute("cars", cars);
-        request.getRequestDispatcher("/WEB-INF/pages/cars.jsp").forward(request, response);
+        request.getRequestDispatcher("/WEB-INF/pages/cars/cars.jsp").forward(request, response);
         request.setAttribute("numberOfFreeParkingSpots", 10);
     }
 

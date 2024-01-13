@@ -1,4 +1,4 @@
-package com.parking.parkinglot.entities;
+package com.parking.parkinglot.entities.cars;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -47,6 +47,7 @@ public class CarPhoto {
     public void setFileContent(byte[] fileContent) {
         this.fileContent = fileContent;
     }
+
     @OneToOne
     public Car getCar() {
         return car;

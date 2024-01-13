@@ -14,7 +14,7 @@
                 <div class="row">
                     <div class="col">
                         <c:if test="${pageContext.request.isUserInRole('WRITE_CARS')}">
-                            <input type="checkbox" name="car_ids" value="${car.id}" />
+                            <input type="checkbox" name="car_ids" value="${car.id}"/>
                         </c:if>
                     </div>
                     <div class="col">
@@ -29,14 +29,17 @@
                     <div class="col">
                         <img src="${pageContext.request.contextPath}/CarPhotos?id=${car.id}" width="48"/>
                     </div>
-                        <c:if test="${pageContext.request.isUserInRole('WRITE_CARS')}">
-                            <div class="col">
-                                <a class="btn btn-success" href="${pageContext.request.contextPath}/AddCarPhoto?id=${car.id}" role="button">Add Photo</a>
-                            </div>
-                            <div class="col">
-                                <a class="btn btn-success" href="${pageContext.request.contextPath}/EditCar?id=${car.id}">Edit Car</a>
-                            </div>
-                        </c:if>
+                    <c:if test="${pageContext.request.isUserInRole('WRITE_CARS')}">
+                        <div class="col">
+                            <a class="btn btn-success"
+                               href="${pageContext.request.contextPath}/AddCarPhoto?id=${car.id}" role="button">Add
+                                Photo</a>
+                        </div>
+                        <div class="col">
+                            <a class="btn btn-success" href="${pageContext.request.contextPath}/EditCar?id=${car.id}">Edit
+                                Car</a>
+                        </div>
+                    </c:if>
                 </div>
             </c:forEach>
         </div>
